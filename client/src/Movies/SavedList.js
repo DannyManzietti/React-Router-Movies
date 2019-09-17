@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
 
 const SavedList = props => (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
     {props.list.map(movieLink => movieLink)}
-    <Link to='/'><div className="home-button">Home</div></Link>
+    <Link to="/">
+      <div className="home-button">Home</div>
+    </Link>
   </div>
 );
 

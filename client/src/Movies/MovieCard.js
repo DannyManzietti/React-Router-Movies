@@ -1,8 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
-  return (!stars ? <div>Loading...</div> :
+  return !stars ? (
+    <div>Loading...</div>
+  ) : (
     <div className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">

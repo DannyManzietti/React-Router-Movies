@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 import MovieCard from "./MovieCard";
-const Movie = (props) => {
+const Movie = props => {
   const [movie, setMovie] = useState();
   const id = props.match.params.id;
   useEffect(() => {
-
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,20 +17,28 @@ const Movie = (props) => {
       .catch(error => {
         console.error(error);
       });
-
   }, [id]);
 
   // Uncomment this only when you have moved on to the stretch goals
   const saveMovie = () => {
     const addToSavedList = props.addToSavedList;
-    addToSavedList(<NavLink activeClassName='active' to={`/movies/${movie.id}`}>{movie.title}</NavLink>)
-  }
+    addToSavedList(
+      <NavLink activeClassName="active" to={`/movies/${movie.id}`}>
+        {movie.title}
+      </NavLink>
+    );
+  };
 
-  return ((movie) ? <div className="save-wrapper">
-  <MovieCard key={movie.id} movie={movie} />
-  <div className="save-button" onClick={() => saveMovie()}>Save</div>
-</div>:<div></div>
+  return movie ? (
+    <div className="save-wrapper">
+      <MovieCard key={movie.id} movie={movie} />
+      <div className="save-button" onClick={() => saveMovie()}>
+        Save
+      </div>
+    </div>
+  ) : (
+    <div></div>
   );
-}
+};
 
 export default Movie;
